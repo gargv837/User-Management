@@ -12,3 +12,11 @@ export const addUser = async (name, email) => {
   );
   return result.rows[0];
 };
+
+export const updateUserEmail = async (name, email) => {
+  const result = await pool.query(
+    "UPDATE users SET email = $2 WHERE name = $1 RETURNING *",
+    [name, email]
+  );
+  return result.rows[0]``;
+};
