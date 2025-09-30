@@ -34,16 +34,15 @@ function UserList() {
 
   const handleDeleteSubmit = async (e) => {
     e.preventDefault();
-    // try {
+    try {
       console.log(deleteForm);
       const res = await API.delete("/users", {params: deleteForm});
       setUsers(users.filter(user => user.name !== deleteForm.name));
       setDeleteForm({ name: ""});
-    // } 
-    // catch (error) {
-    //   console.error("Error deleting user:", error);
-    //   alert("Error deleting user. Please check if the name exists.");
-    // }
+    } catch (error) {
+      console.error("Error deleting user:", error);
+      alert("Error deleting user. Please check if the name exists.");
+    }
   };
 
   return (
